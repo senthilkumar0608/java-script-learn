@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        div {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            background-color: #498BFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+            margin: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="icon-container">
+        <ion-icon name="aperture-outline"></ion-icon>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        const iconContainer = document.getElementById('icon-container');
+        const icon = iconContainer.querySelector('ion-icon');
+
+        const icons = [
+            'aperture-outline',
+            'heart-outline',
+            'star-outline',
+            'moon-outline',
+            'sunny-outline'
+        ];
+        
+        let currentIndex = 0;
+
+        iconContainer.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % icons.length;
+            icon.setAttribute('name', icons[currentIndex]);
+            iconContainer.style.backgroundColor = getRandomColor();
+        });
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+</body>
+</html>
